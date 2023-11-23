@@ -104,18 +104,21 @@ int main(void)
   /* USER CODE BEGIN 2 */
   system_init();
   lcd_Clear(WHITE);
-  test_lcd();
+//  test_lcd();
+//  displayTraffic(RED,GREEN);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+#include "global.h"
+  timerBegin(1000);
   while (1)
   {
-	  while(!flag_timer2);
-	  flag_timer2 = 0;
+//	  while(!flag_timer[2]);
+//	  flag_timer[2] = 0;
 	  button_Scan();
 	  test_button();
-
+	  fsm_for_input_processing();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -176,7 +179,7 @@ void system_init(){
 	  led7_init();
 	  button_init();
 	  lcd_init();
-	  setTimer2(50);
+	  setTimer(50,2);
 }
 
 uint8_t count_led_debug = 0;
@@ -223,12 +226,29 @@ void test_button(){
 }
 void test_lcd(){
 	lcd_Fill(0, 0, 240, 20, BLUE);
-	lcd_StrCenter(0, 2, "Hello World !!!", RED, BLUE, 16, 1);
+	lcd_StrCenter(0, 2, "TRAFFIC LIGHT !!!", WHITE, BLUE, 16, 1);
 	lcd_ShowStr(20, 30, "Test lcd screen", WHITE, RED, 24, 0);
-	lcd_DrawCircle(60, 120, GREEN, 40, 1);
 	lcd_DrawCircle(160, 120, BRED, 40, 0);
-	lcd_ShowPicture(80, 200, 90, 90, gImage_logo);
+
+	lcd_ShowPicture(80, 180, 90, 90, gImage_logo);
+	lcd_DrawCircle(88, 150, RED, 15, 1);
+	lcd_DrawCircle(152, 150, GREEN, 15, 1);
+	lcd_DrawCircle(120, 150, YELLOW, 15, 1);
+
+	lcd_DrawCircle(88, 300, RED, 15, 1);
+	lcd_DrawCircle(152, 300, GREEN, 15, 1);
+	lcd_DrawCircle(120, 300, YELLOW, 15, 1);
+
+	lcd_DrawCircle(44, 193, RED, 15, 1);
+	lcd_DrawCircle(44, 225, YELLOW, 15, 1);
+	lcd_DrawCircle(44, 257, GREEN, 15, 1);
+
+	lcd_DrawCircle(196, 193, RED, 15, 1);
+	lcd_DrawCircle(196, 225, YELLOW, 15, 1);
+	lcd_DrawCircle(196, 257, GREEN, 15, 1);
+
 }
+
 /* USER CODE END 4 */
 
 /**

@@ -1,0 +1,30 @@
+/*
+ * fsm_automatic.c
+ *
+ *  Created on: Nov 16, 2023
+ *      Author: Admin
+ */
+
+
+#include "fsm_automatic.h"
+#define INIT 0
+#define RED	1
+#define YELLOW 2
+#define GREEN3
+
+#define RED_DURATION
+#define YELLOW_DURATION
+#define GREEN_DURATION
+
+
+int AUTO_STATUS1;
+int AUTO_STATUS2;
+
+int red_duration = RED_DURATION;
+
+void fsm_automatic_run(){
+	switch(AUTO_STATUS1){
+		case INIT:
+
+	}
+}

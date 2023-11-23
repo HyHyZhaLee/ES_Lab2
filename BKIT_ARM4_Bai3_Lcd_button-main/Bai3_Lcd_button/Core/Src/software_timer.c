@@ -7,12 +7,12 @@
 
 #include "software_timer.h"
 
-#define TIMER_CYCLE_2 1
+#define TIMER_CYCLE 1
 
 //software timer variable
-uint16_t flag_timer2 = 0;
-uint16_t timer2_counter = 0;
-uint16_t timer2_MUL = 0;
+uint16_t flag_timer[MAX_TIMER];
+uint16_t timer_counter[MAX_TIMER];
+uint16_t timer_MUL[MAX_TIMER];
 
 
 /**
@@ -30,10 +30,10 @@ void timer_init(){
   * @param  duration Duration of software timer interrupt
   * @retval None
   */
-void setTimer2(uint16_t duration){
-	timer2_MUL = duration/TIMER_CYCLE_2;
-	timer2_counter = timer2_MUL;
-	flag_timer2 = 0;
+void setTimer(uint16_t duration, int ID){
+	timer_MUL[ID] = duration/TIMER_CYCLE;
+	timer_counter[ID] = timer_MUL[ID];
+	flag_timer[ID] = 0;
 }
 
 /**
@@ -42,17 +42,23 @@ void setTimer2(uint16_t duration){
   * @note	This callback function is called by system
   * @retval None
   */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	if(htim->Instance == TIM2){
-		if(timer2_counter > 0){
-			timer2_counter--;
-			if(timer2_counter == 0) {
-				flag_timer2 = 1;
-				timer2_counter = timer2_MUL;
+void timerRun(){
+	for(int i = 0; i<MAX_TIMER;i++){
+		if(timer_counter[i] > 0){
+			timer_counter[i]--;
+			if(timer_counter[i] <= 0) {
+				flag_timer[i] = 1;
 			}
 		}
+	}
+}
+void timerBegin(uint16_t duration){
+	for(int i = 0; i<MAX_TIMER;i++) setTimer(duration, i);
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	if(htim->Instance == TIM2){
+		timerRun();
 		// 1ms interrupt here
-		led7_Scan();
 	}
 }
 

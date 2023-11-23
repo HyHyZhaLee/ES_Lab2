@@ -1,0 +1,54 @@
+/*
+ * fsm_automatic.c
+ *
+ *  Created on: Nov 16, 2023
+ *      Author: Admin
+ */
+
+
+#include "fsm_automatic.h"
+#define INIT            0
+#define RED_AUTO        1
+#define YELLOW_AUTO     2
+#define GREEN_AUTO      3
+
+#define RED_DURATION    7
+#define YELLOW_DURATION 4
+#define GREEN_DURATION  2
+
+
+int AUTO_STATUS1;
+int AUTO_STATUS2;
+
+int red_duration = RED_DURATION;
+int yellow_duration = YELLOW_DURATION;
+int green_duration = GREEN_DURATION;
+
+int temp_red_duration = RED_DURATION;
+int temp_yellow_duration = YELLOW_DURATION;
+int temp_green_duration = GREEN_DURATION;
+
+void fsm_automatic_run() {
+    switch (AUTO_STATUS1) {
+        case INIT:
+            // Set timer for INIT state
+            // Transition to RED state when the timer expires
+            // Example: if (timer_expired) { AUTO_STATUS1 = RED; }
+            break;
+
+        case RED_AUTO:
+            // Handle RED state logic
+            // Transition to YELLOW state when the timer expires
+            break;
+
+        case YELLOW_AUTO:
+            // Handle YELLOW state logic
+            // Transition to GREEN state when the timer expires
+            break;
+
+        case GREEN_AUTO:
+            // Handle GREEN state logic
+            // Transition to RED state when the timer expires
+            break;
+    }
+}
