@@ -62,6 +62,7 @@ void system_init();
 void test_LedDebug();
 void displayTime();
 void updateTime();
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -109,14 +110,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
  lcd_Clear(BLACK);
  updateTime();
+ setTimer(1000, 0);
   while (1)
   {
-	  while(!flag_timer2);
-	  flag_timer2 = 0;
 	  button_Scan();
-	  ds3231_ReadTime();
-	  displayTime();
-    /* USER CODE END WHILE */
+	  fsm_for_input_processing();
+	  if(flag_timer[0]){
+		  setTimer(1000, 0);
+		  HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
+	  }
+	  /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
@@ -177,7 +180,7 @@ void system_init(){
 	  button_init();
 	  lcd_init();
 	  ds3231_init();
-	  setTimer2(50);
+//	  setTimer2(50);
 }
 
 void test_LedDebug(){
@@ -212,21 +215,10 @@ void updateTime(){
 	ds3231_Write(ADDRESS_SEC, 23);
 }
 
-uint8_t isButtonUp()
-{
-    if (button_count[3] == 1)
-        return 1;
-    else
-        return 0;
-}
-uint8_t isButtonDown()
-{
-    if (button_count[7] == 1)
-        return 1;
-    else
-        return 0;
-}
+
+int toggle = GREEN;
 void displayTime(){
+	toggle = (toggle == GREEN) ? BLACK : GREEN;
 	lcd_ShowIntNum(70, 100, ds3231_hours, 2, GREEN, BLACK, 24);
 	lcd_ShowIntNum(110, 100, ds3231_min, 2, GREEN, BLACK, 24);
 	lcd_ShowIntNum(150, 100, ds3231_sec, 2, GREEN, BLACK, 24);

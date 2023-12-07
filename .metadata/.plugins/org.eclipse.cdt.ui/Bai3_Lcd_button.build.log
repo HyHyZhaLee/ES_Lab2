@@ -1,40 +1,9 @@
-10:46:25 **** Incremental Build of configuration Debug for project Bai3_Lcd_button ****
+09:14:26 **** Incremental Build of configuration Debug for project Bai3_Lcd_button ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/fsm_automatic.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_automatic.d" -MT"Core/Src/fsm_automatic.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fsm_automatic.o"
-../Core/Src/fsm_automatic.c: In function 'fsm_for_input_processing':
-../Core/Src/fsm_automatic.c:58:4: warning: implicit declaration of function 'fsm_automatic_run' [-Wimplicit-function-declaration]
-   58 |    fsm_automatic_run();
-      |    ^~~~~~~~~~~~~~~~~
-../Core/Src/fsm_automatic.c:61:4: warning: implicit declaration of function 'toggleLED' [-Wimplicit-function-declaration]
-   61 |    toggleLED(RED);
-      |    ^~~~~~~~~
-../Core/Src/fsm_automatic.c: At top level:
-../Core/Src/fsm_automatic.c:75:6: warning: conflicting types for 'fsm_automatic_run'
-   75 | void fsm_automatic_run() {
-      |      ^~~~~~~~~~~~~~~~~
-../Core/Src/fsm_automatic.c:58:4: note: previous implicit declaration of 'fsm_automatic_run' was here
-   58 |    fsm_automatic_run();
-      |    ^~~~~~~~~~~~~~~~~
-../Core/Src/fsm_automatic.c: In function 'fsm_automatic_run':
-../Core/Src/fsm_automatic.c:81:10: warning: implicit declaration of function 'displayTraffic' [-Wimplicit-function-declaration]
-   81 |          displayTraffic(RED, GREEN);
-      |          ^~~~~~~~~~~~~~
-../Core/Src/fsm_automatic.c: At top level:
-../Core/Src/fsm_automatic.c:122:6: warning: conflicting types for 'displayTraffic'
-  122 | void displayTraffic(int led1, int led2) {
-      |      ^~~~~~~~~~~~~~
-../Core/Src/fsm_automatic.c:81:10: note: previous implicit declaration of 'displayTraffic' was here
-   81 |          displayTraffic(RED, GREEN);
-      |          ^~~~~~~~~~~~~~
-../Core/Src/fsm_automatic.c:170:6: warning: conflicting types for 'toggleLED'
-  170 | void toggleLED(int led){
-      |      ^~~~~~~~~
-../Core/Src/fsm_automatic.c:61:4: note: previous implicit declaration of 'toggleLED' was here
-   61 |    toggleLED(RED);
-      |    ^~~~~~~~~
+arm-none-eabi-gcc "../Core/Src/software_timer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/software_timer.d" -MT"Core/Src/software_timer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/software_timer.o"
 In file included from ../Core/Inc/global.h:14,
-                 from ../Core/Inc/fsm_automatic.h:11,
-                 from ../Core/Src/fsm_automatic.c:9:
+                 from ../Core/Inc/software_timer.h:12,
+                 from ../Core/Src/software_timer.c:8:
 ../Core/Inc/lcd.h:83:13: warning: 'LCD_WR_DATA' declared 'static' but never defined [-Wunused-function]
    83 | static void LCD_WR_DATA(uint16_t data);
       |             ^~~~~~~~~~~
@@ -53,5 +22,5 @@ Finished building: default.size.stdout
 Finished building: Bai3_Lcd_button.list
  
 
-10:46:26 Build Finished. 0 errors, 8 warnings. (took 788ms)
+09:14:27 Build Finished. 0 errors, 2 warnings. (took 656ms)
 

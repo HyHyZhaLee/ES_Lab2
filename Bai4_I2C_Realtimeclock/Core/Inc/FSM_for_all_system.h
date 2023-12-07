@@ -1,0 +1,14 @@
+/*
+ * FSM_for_all_system.h
+ *
+ *  Created on: Dec 7, 2023
+ *      Author: Admin
+ */
+
+#ifndef INC_FSM_FOR_ALL_SYSTEM_H_
+#define INC_FSM_FOR_ALL_SYSTEM_H_
+
+#include "global.h"
+
+
+#endif /* INC_FSM_FOR_ALL_SYSTEM_H_ */

@@ -1,0 +1,16 @@
+/*
+ * global.h
+ *
+ *  Created on: Dec 7, 2023
+ *      Author: Admin
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#include "button.h"
+#include "software_timer.h"
+#include "main.h"
+
+
+#endif /* INC_GLOBAL_H_ */

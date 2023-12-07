@@ -1,0 +1,29 @@
+10:32:12 **** Incremental Build of configuration Debug for project Bai4_I2C_Realtimeclock ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:117:4: warning: implicit declaration of function 'fsm_for_input_processing' [-Wimplicit-function-declaration]
+  117 |    fsm_for_input_processing();
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Src/main.c:33:
+../Core/Src/main.c: At top level:
+../Core/Inc/lcd.h:84:17: warning: inline function 'LCD_RD_DATA' declared but never defined
+   84 | inline uint16_t LCD_RD_DATA(void);
+      |                 ^~~~~~~~~~~
+../Core/Inc/lcd.h:83:13: warning: inline function 'LCD_WR_DATA' declared but never defined
+   83 | inline void LCD_WR_DATA(uint16_t data);
+      |             ^~~~~~~~~~~
+arm-none-eabi-gcc -o "Bai4_I2C_Realtimeclock.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Documents\Github\ES_Lab2\Bai4_I2C_Realtimeclock\STM32F407ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bai4_I2C_Realtimeclock.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bai4_I2C_Realtimeclock.elf
+ 
+arm-none-eabi-size   Bai4_I2C_Realtimeclock.elf 
+arm-none-eabi-objdump -h -S  Bai4_I2C_Realtimeclock.elf  > "Bai4_I2C_Realtimeclock.list"
+   text	   data	    bss	    dec	    hex	filename
+  33328	     24	   2000	  35352	   8a18	Bai4_I2C_Realtimeclock.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bai4_I2C_Realtimeclock.list
+ 
+
+10:32:13 Build Finished. 0 errors, 3 warnings. (took 772ms)
+
